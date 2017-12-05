@@ -15,30 +15,31 @@ struct Teller {
 
 int main() {
 	srand(time(0));
-	float generateRandNum = float(rand())/ float(RAND_MAX);
-	cout << generateRandNum << endl;
+	float generateRandNum = float(rand()) / float(RAND_MAX);
 	Teller Test;
 	ArrayQueue<int> Test2;
-	int initCustomers;
+	int Customers, total_waitTime = 0;
 	int time = 0;
 	cout << "Please enter the intial amount of customers!" << endl;
-	cin >> initCustomers;
-	cout << initCustomers << " customer(s) have entered at time: " << time << endl;
+	cin >> Customers;
+	cout << Customers << " customer(s) have entered at time: " << time << endl;
 	time++;
-	for (int i = 1; i <= initCustomers; i++)
+	for (int i = 1; i <= Customers; i++)
 	{
 		cout << "Customer #: " << i << " has entered the queue!" << endl;
 		Test2.enqueue(i);
 	}
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		if (Test.free == true)
+		if (Test.free == true && Customers>0)
 		{
-			cout << "Customer #: " << Test2.peekFront() << " Has arrived at time: " << time << endl;
+			cout << "At time: "<<time<< " Customer #: " << Test2.peekFront() << " Has arrived to the teller"  << endl;
 			Test2.dequeue();
+			Customers--;
 			Test.free = false;
 			Test.arrival_Time = time;
 			Test.wait_Time = rand() % 10 + 1;
+			total_waitTime += Test.wait_Time;
 			time++;
 		}
 		else if (Test.free == false && Test.wait_Time == 0)
@@ -46,18 +47,27 @@ int main() {
 			Test.departed_Time = time;
 			cout << "Customer has departed at time: " << Test.departed_Time << endl;
 			Test.free = true;
+			time++;
 		}
 		else
 		{
-			cout << "At time: " << time << endl;
-			cout << "Waiting for teller to be finished..." << endl;
-			time++;
-			Test.wait_Time--;
-			cout << "Time left for Teller to be free: " << Test.wait_Time << endl;
+			if (Customers > 0)
+			{
+				cout << "At time: " << time << ": " << Customers << " customers are waiting. Wait Time: " << Test.wait_Time << endl;
+				time++;
+				Test.wait_Time--;
+			}
+			else
+			{
+				cout << "At time: " << time << " There are no customers at this time" << endl;
+				time++;
+			}
 		}
 
 
 	}
+
+	cout << total_waitTime << endl;
 
 	system("pause");
 	return 0;
