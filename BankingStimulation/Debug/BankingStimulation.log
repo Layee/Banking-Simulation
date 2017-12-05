@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\abraham\desktop\fall2017\csc326\bankingstimulation\bankingstimulation\arrayqueue.h(32): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+  c:\users\abraham\desktop\fall2017\csc326\bankingstimulation\bankingstimulation\arrayqueue.h(33): note: see reference to class template instantiation 'ArrayQueue<ItemType>' being compiled
+c:\users\abraham\desktop\fall2017\csc326\bankingstimulation\bankingstimulation\arrayqueue.cpp(52): warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+c:\users\abraham\desktop\fall2017\csc326\bankingstimulation\bankingstimulation\main.cpp(17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  BankingStimulation.vcxproj -> C:\Users\abraham\Desktop\Fall2017\CSC326\BankingStimulation\Debug\BankingStimulation.exe
+  BankingStimulation.vcxproj -> C:\Users\abraham\Desktop\Fall2017\CSC326\BankingStimulation\Debug\BankingStimulation.pdb (Partial PDB)
