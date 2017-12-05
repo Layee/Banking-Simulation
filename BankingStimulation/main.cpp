@@ -15,11 +15,15 @@ struct Teller {
 
 int main() {
 	srand(time(0));
-	float generateRandNum = float(rand()) / float(RAND_MAX);
+	float generateRandNum;
+	float probibilty = float(rand()) / float(RAND_MAX);
+	int showTime;
 	Teller Test;
 	ArrayQueue<int> Test2;
 	int Customers, total_waitTime = 0;
 	int time = 0;
+	cout << "Enter the time customer to arrive" << endl;
+	cin >> showTime;
 	cout << "Please enter the intial amount of customers!" << endl;
 	cin >> Customers;
 	cout << Customers << " customer(s) have entered at time: " << time << endl;
@@ -29,8 +33,15 @@ int main() {
 		cout << "Customer #: " << i << " has entered the queue!" << endl;
 		Test2.enqueue(i);
 	}
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i <15; i++)
 	{
+		generateRandNum = float(rand()) / float(RAND_MAX);
+		if (time % showTime == 0)
+		{
+			if (generateRandNum >= probibilty)
+				Customers++;
+			cout << "Customer has arrived at " << time << endl;
+		}
 		if (Test.free == true && Customers>0)
 		{
 			cout << "At time: "<<time<< " Customer #: " << Test2.peekFront() << " Has arrived to the teller"  << endl;
@@ -66,8 +77,8 @@ int main() {
 
 
 	}
-
-	cout << total_waitTime << endl;
+	cout << endl;
+	cout <<"Average wait time:"<< total_waitTime << endl;
 
 	system("pause");
 	return 0;
